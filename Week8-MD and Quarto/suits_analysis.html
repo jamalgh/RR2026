@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jamal Al-Shaweai">
 
-<title>Comprehensive Analysis of Suits (2011-2019)</title>
+<title>suits_analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,157 +37,78 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">0.1</span> Overview</a></li>
-  <li><a href="#data-collection-and-setup" id="toc-data-collection-and-setup" class="nav-link" data-scroll-target="#data-collection-and-setup"><span class="header-section-number">0.2</span> Data Collection and Setup</a>
-  <ul class="collapse">
-  <li><a href="#creating-the-viewership-dataset" id="toc-creating-the-viewership-dataset" class="nav-link" data-scroll-target="#creating-the-viewership-dataset"><span class="header-section-number">0.2.1</span> Creating the Viewership Dataset</a></li>
-  </ul></li>
-  <li><a href="#create-data-directory-if-it-doesnt-exist" id="toc-create-data-directory-if-it-doesnt-exist" class="nav-link" data-scroll-target="#create-data-directory-if-it-doesnt-exist"><span class="header-section-number">1</span> Create data directory if it doesn’t exist</a></li>
-  <li><a href="#create-viewership-dataframe" id="toc-create-viewership-dataframe" class="nav-link" data-scroll-target="#create-viewership-dataframe"><span class="header-section-number">2</span> Create viewership dataframe</a></li>
-  <li><a href="#save-to-csv" id="toc-save-to-csv" class="nav-link" data-scroll-target="#save-to-csv"><span class="header-section-number">3</span> Save to CSV</a></li>
-  <li><a href="#display-the-data" id="toc-display-the-data" class="nav-link" data-scroll-target="#display-the-data"><span class="header-section-number">4</span> Display the data</a></li>
-  <li><a href="#calculate-changes" id="toc-calculate-changes" class="nav-link" data-scroll-target="#calculate-changes"><span class="header-section-number">5</span> Calculate changes</a></li>
-  <li><a href="#calculate-key-statistics" id="toc-calculate-key-statistics" class="nav-link" data-scroll-target="#calculate-key-statistics"><span class="header-section-number">6</span> Calculate key statistics</a></li>
-  <li><a href="#display-statistics" id="toc-display-statistics" class="nav-link" data-scroll-target="#display-statistics"><span class="header-section-number">7</span> Display statistics</a></li>
-  <li><a href="#create-summary-table" id="toc-create-summary-table" class="nav-link" data-scroll-target="#create-summary-table"><span class="header-section-number">8</span> Create summary table</a></li>
-  <li><a href="#set-style" id="toc-set-style" class="nav-link" data-scroll-target="#set-style"><span class="header-section-number">9</span> Set style</a></li>
-  <li><a href="#graph-1-viewership-over-time" id="toc-graph-1-viewership-over-time" class="nav-link" data-scroll-target="#graph-1-viewership-over-time"><span class="header-section-number">10</span> GRAPH 1: Viewership Over Time</a></li>
-  <li><a href="#add-value-annotations" id="toc-add-value-annotations" class="nav-link" data-scroll-target="#add-value-annotations"><span class="header-section-number">11</span> Add value annotations</a></li>
-  <li><a href="#graph-2-season-to-season-changes" id="toc-graph-2-season-to-season-changes" class="nav-link" data-scroll-target="#graph-2-season-to-season-changes"><span class="header-section-number">12</span> GRAPH 2: Season-to-Season Changes</a></li>
-  <li><a href="#add-value-labels-on-bars" id="toc-add-value-labels-on-bars" class="nav-link" data-scroll-target="#add-value-labels-on-bars"><span class="header-section-number">13</span> Add value labels on bars</a></li>
-  <li><a href="#graph-3-percentage-change" id="toc-graph-3-percentage-change" class="nav-link" data-scroll-target="#graph-3-percentage-change"><span class="header-section-number">14</span> GRAPH 3: Percentage Change</a></li>
-  <li><a href="#add-value-labels" id="toc-add-value-labels" class="nav-link" data-scroll-target="#add-value-labels"><span class="header-section-number">15</span> Add value labels</a></li>
-  <li><a href="#create-detailed-statistics-table" id="toc-create-detailed-statistics-table" class="nav-link" data-scroll-target="#create-detailed-statistics-table"><span class="header-section-number">16</span> Create detailed statistics table</a></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Comprehensive Analysis of <em>Suits</em> (2011-2019)</h1>
-<p class="subtitle lead">Viewership Trends and Statistical Analysis</p>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jamal Al-Shaweai </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="overview" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">0.1</span> Overview</h2>
-<p>This report analyzes the viewership trends of <em>Suits</em>, an American legal drama television series that aired on USA Network from 2011 to 2019. The analysis includes data extraction, visualization, and statistical examination of season-by-season viewership patterns.</p>
-</section>
-<section id="data-collection-and-setup" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="data-collection-and-setup"><span class="header-section-number">0.2</span> Data Collection and Setup</h2>
-<section id="creating-the-viewership-dataset" class="level3" data-number="0.2.1">
-<h3 data-number="0.2.1" class="anchored" data-anchor-id="creating-the-viewership-dataset"><span class="header-section-number">0.2.1</span> Creating the Viewership Dataset</h3>
-<p>First, let’s create the viewership data from Wikipedia sources:</p>
-<p>```{python} import pandas as pd import matplotlib.pyplot as plt import seaborn as sns import numpy as np from pathlib import Path</p>
-</section>
-</section>
-<section id="create-data-directory-if-it-doesnt-exist" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Create data directory if it doesn’t exist</h1>
-<p>Path(‘data’).mkdir(exist_ok=True) Path(‘images’).mkdir(exist_ok=True)</p>
-</section>
-<section id="create-viewership-dataframe" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Create viewership dataframe</h1>
-<p>viewership_data = { ‘season’: [1, 2, 3, 4, 5, 6, 7, 8, 9], ‘episodes’: [12, 16, 16, 16, 16, 16, 16, 16, 10], ‘first_aired’: [‘2011-06-23’, ‘2012-06-14’, ‘2013-07-16’, ‘2014-06-11’, ‘2015-06-24’, ‘2016-07-13’, ‘2017-07-12’, ‘2018-07-18’, ‘2019-07-17’], ‘last_aired’: [‘2011-09-08’, ‘2013-02-21’, ‘2014-04-10’, ‘2015-03-04’, ‘2016-03-02’, ‘2017-03-01’, ‘2018-04-25’, ‘2019-02-27’, ‘2019-09-25’], ‘avg_viewers_millions’: [4.16, 3.60, 2.73, 2.26, 2.01, 1.60, 1.30, 1.02, 0.99] }</p>
-<p>df = pd.DataFrame(viewership_data)</p>
-</section>
-<section id="save-to-csv" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Save to CSV</h1>
-<p>df.to_csv(‘data/viewership.csv’, index=False)</p>
-</section>
-<section id="display-the-data" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Display the data</h1>
-<p>print(“=== SUITS VIEWERSHIP DATA ===”) print(df.to_string(index=False))</p>
-</section>
-<section id="calculate-changes" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Calculate changes</h1>
-<p>df[‘viewers_change’] = df[‘avg_viewers_millions’].diff() df[‘viewers_change_percent’] = df[‘avg_viewers_millions’].pct_change() * 100</p>
-</section>
-<section id="calculate-key-statistics" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Calculate key statistics</h1>
-<p>season_1_viewers = df.loc[0, ‘avg_viewers_millions’] final_season_viewers = df.loc[len(df)-1, ‘avg_viewers_millions’] total_change = final_season_viewers - season_1_viewers percent_change = (total_change / season_1_viewers) * 100</p>
-<p>peak_season = df.loc[df[‘avg_viewers_millions’].idxmax()] lowest_season = df.loc[df[‘avg_viewers_millions’].idxmin()]</p>
-</section>
-<section id="display-statistics" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Display statistics</h1>
-<p>print(“=== KEY STATISTICS ===”) print(f”Season 1 Average: {season_1_viewers:.2f} million viewers”) print(f”Final Season Average: {final_season_viewers:.2f} million viewers”) print(f”Total Change: {total_change:.2f} million ({percent_change:.1f}%)“) print(f”Peak Season: Season {int(peak_season[‘season’])} with {peak_season[‘avg_viewers_millions’]:.2f}M viewers”) print(f”Lowest Season: Season {int(lowest_season[‘season’])} with {lowest_season[‘avg_viewers_millions’]:.2f}M viewers”) print(f”Episodes: {df[‘episodes’].sum()}“) print(f”Total Seasons: {len(df)}“) print(f”Series Run: {df[‘first_aired’].iloc[0]} to {df[‘last_aired’].iloc[-1]}“)</p>
-</section>
-<section id="create-summary-table" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Create summary table</h1>
-<p>summary_data = { ‘Metric’: [‘Total Seasons’, ‘Total Episodes’, ‘Original Network’, ‘Season 1 Average’, ‘Season 9 Average’, ‘Peak Season’, ‘Lowest Season’, ‘Overall Change’, ‘Percentage Decline’, ‘Series Run’], ‘Value’: [str(len(df)), str(df[‘episodes’].sum()), ‘USA Network’, f”{season_1_viewers:.2f} million viewers”, f”{final_season_viewers:.2f} million viewers”, f”Season {int(peak_season[‘season’])} ({peak_season[‘avg_viewers_millions’]:.2f}M)“, f”Season {int(lowest_season[‘season’])} ({lowest_season[‘avg_viewers_millions’]:.2f}M)“, f”{total_change:.2f} million viewers”, f”{percent_change:.1f}%“, f”{df[‘first_aired’].iloc[0]} – {df[‘last_aired’].iloc[-1]}“] }</p>
-<p>summary_df = pd.DataFrame(summary_data) summary_df</p>
-</section>
-<section id="set-style" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Set style</h1>
-<p>plt.style.use(‘seaborn-v0_8-whitegrid’) sns.set_palette(“husl”)</p>
-</section>
-<section id="graph-1-viewership-over-time" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> GRAPH 1: Viewership Over Time</h1>
-<p>fig1, ax1 = plt.subplots(figsize=(12, 6)) ax1.plot(df[‘season’], df[‘avg_viewers_millions’], marker=‘o’, linewidth=2.5, markersize=8, color=‘#2E86AB’, markerfacecolor=‘#A23B72’, markeredgewidth=2) ax1.fill_between(df[‘season’], df[‘avg_viewers_millions’], alpha=0.3, color=‘#2E86AB’)</p>
-</section>
-<section id="add-value-annotations" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Add value annotations</h1>
-<p>for i, row in df.iterrows(): ax1.annotate(f”{row[‘avg_viewers_millions’]:.2f}M”, (row[‘season’], row[‘avg_viewers_millions’]), textcoords=“offset points”, xytext=(0,10), ha=‘center’, fontsize=9)</p>
-<p>ax1.set_title(‘Suits: Average Viewership by Season (2011-2019)’, fontsize=14, fontweight=‘bold’, pad=20) ax1.set_xlabel(‘Season’, fontsize=12) ax1.set_ylabel(‘Average Viewers (millions)’, fontsize=12) ax1.set_xticks(range(1, 10)) ax1.set_ylim(0, 5) ax1.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(‘images/viewership_over_time.png’, dpi=300, bbox_inches=‘tight’) plt.show()</p>
-</section>
-<section id="graph-2-season-to-season-changes" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> GRAPH 2: Season-to-Season Changes</h1>
-<p>fig2, ax2 = plt.subplots(figsize=(12, 6)) colors = [‘#E94F37’ if x &lt; 0 else ‘#44AF69’ for x in df[‘viewers_change’]] bars = ax2.bar(df[‘season’], df[‘viewers_change’], color=colors, alpha=0.7, edgecolor=‘black’, linewidth=1.2)</p>
-<p>ax2.axhline(y=0, color=‘black’, linestyle=‘-’, linewidth=1.5) ax2.set_title(‘Suits: Season-to-Season Viewership Change’, fontsize=14, fontweight=‘bold’, pad=20) ax2.set_xlabel(‘Season’, fontsize=12) ax2.set_ylabel(‘Change in Viewers (millions)’, fontsize=12) ax2.set_xticks(range(1, 10)) ax2.grid(True, alpha=0.3, axis=‘y’)</p>
-</section>
-<section id="add-value-labels-on-bars" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Add value labels on bars</h1>
-<p>for i, (season, change) in enumerate(zip(df[‘season’], df[‘viewers_change’])): if not pd.isna(change): ax2.text(season, change + (0.05 if change &gt; 0 else -0.15), f’{change:+.2f}‘, ha=’center’, va=‘bottom’ if change &gt; 0 else ‘top’, fontsize=9, fontweight=‘bold’)</p>
-<p>plt.tight_layout() plt.savefig(‘images/viewership_changes.png’, dpi=300, bbox_inches=‘tight’) plt.show()</p>
-</section>
-<section id="graph-3-percentage-change" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> GRAPH 3: Percentage Change</h1>
-<p>fig3, ax3 = plt.subplots(figsize=(12, 6)) colors = [‘#E94F37’ if x &lt; 0 else ‘#44AF69’ for x in df[‘viewers_change_percent’]] bars = ax3.bar(df[‘season’], df[‘viewers_change_percent’], color=colors, alpha=0.7, edgecolor=‘black’, linewidth=1.2)</p>
-<p>ax3.axhline(y=0, color=‘black’, linestyle=‘-’, linewidth=1.5) ax3.set_title(‘Suits: Season-to-Season Percentage Change’, fontsize=14, fontweight=‘bold’, pad=20) ax3.set_xlabel(‘Season’, fontsize=12) ax3.set_ylabel(‘Percentage Change (%)’, fontsize=12) ax3.set_xticks(range(1, 10)) ax3.grid(True, alpha=0.3, axis=‘y’)</p>
-</section>
-<section id="add-value-labels" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Add value labels</h1>
-<p>for i, (season, pct_change) in enumerate(zip(df[‘season’], df[‘viewers_change_percent’])): if not pd.isna(pct_change): ax3.text(season, pct_change + (2 if pct_change &gt; 0 else -8), f’{pct_change:+.1f}%‘, ha=’center’, va=‘bottom’ if pct_change &gt; 0 else ‘top’, fontsize=9, fontweight=‘bold’)</p>
-<p>plt.tight_layout() plt.savefig(‘images/percentage_changes.png’, dpi=300, bbox_inches=‘tight’) plt.show()</p>
-</section>
-<section id="create-detailed-statistics-table" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> Create detailed statistics table</h1>
-<p>stats_data = { ‘Statistic’: [‘Total viewership loss’, ‘Percentage decline’, ‘Average seasonal decline’, ‘Largest single-season drop’, ‘Smallest decline’, ‘Number of seasons with decline’, ‘Seasons above 3M viewers’, ‘Seasons below 1.5M viewers’], ‘Value’: [f”{abs(total_change):.2f} million viewers”, f”{abs(percent_change):.1f}%“, f”{abs(total_change)/(len(df)-1):.2f} million viewers per season”, f”{abs(df[‘viewers_change’].min()):.2f}M viewers (Season 2→3)“, f”{abs(df[‘viewers_change’].iloc[-1]):.2f}M viewers (Season 8→9)“, f”{len(df)-1} out of {len(df)-1} transitions”, f”{len(df[df[‘avg_viewers_millions’] &gt; 3.0])} seasons”, f”{len(df[df[‘avg_viewers_millions’] &lt; 1.5])} seasons”] }</p>
-<p>stats_df = pd.DataFrame(stats_data) stats_df</p>
-</section>
+<p><strong># Comprehensive Analysis of</strong> *Suits* <strong>(2011-2019)</strong></p>
+<p><strong>## Show Description</strong></p>
+<p>*Suits* is an American legal drama television series created by Aaron Korsh that premiered on USA Network on June 23, 2011. The show ran for nine seasons with 134 total episodes, concluding on September 25, 2019.</p>
+<p>Set in a New York City corporate law firm, the series follows Mike Ross (Patrick J. Adams), a college dropout with a photographic memory, as he works as an associate for the successful attorney Harvey Specter (Gabriel Macht). The show also stars Meghan Markle as Rachel Zane, Gina Torres as Jessica Pearson, Rick Hoffman as Louis Litt, and Sarah Rafferty as Donna Paulsen.</p>
+<p>Despite ending in 2019, *Suits* experienced an unprecedented surge in popularity after being added to Netflix and Peacock in 2023, becoming the most-streamed show of the year with 57.7 billion minutes watched.</p>
+<p>![Suits Logo](images/suits_logo.jpg)</p>
+<p>*Note: Save a logo/screenshot as `images/suits_logo.jpg` to replace this placeholder.*</p>
+<p><strong>## Viewership Statistics Summary</strong></p>
+<p>| Metric | Value |</p>
+<p>|——–|——-|</p>
+<p>| <strong>**Total Seasons**</strong> | 9 |</p>
+<p>| <strong>**Total Episodes**</strong> | 134 |</p>
+<p>| <strong>**Original Network**</strong> | USA Network |</p>
+<p>| <strong>**Season 1 Average**</strong> | 4.16 million viewers |</p>
+<p>| <strong>**Season 9 Average**</strong> | 0.99 million viewers |</p>
+<p>| <strong>**Peak Season**</strong> | Season 1 (4.16M) |</p>
+<p>| <strong>**Lowest Season**</strong> | Season 9 (0.99M) |</p>
+<p>| <strong>**Overall Change**</strong> | -3.17M viewers (76.2% decline) |</p>
+<p>| <strong>**Series Run**</strong> | 2011-06-23 – 2019-09-25 |</p>
+<p><strong>## Viewership Trends</strong></p>
+<p><strong>### Overall Viewership Over Time</strong></p>
+<p>![Viewership Over Time](images/viewership_over_time.png)</p>
+<p>The viewership data reveals a clear declining trend throughout the show’s nine-season run. Starting with a strong <strong>**4.16 million viewers**</strong> in Season 1, the show experienced its most significant drop between Seasons 2 and 3, losing <strong>**0.87 million viewers**</strong> (a <strong>**24.2% decrease**</strong>).</p>
+<p><strong>### Season-to-Season Changes</strong></p>
+<p>![Season-to-Season Changes](images/viewership_changes.png)</p>
+<p>![Percentage Changes](images/percentage_changes.png)</p>
+<p><strong>## Detailed Analysis of Changes</strong></p>
+<p>The viewership trajectory of *Suits* demonstrates several distinct phases:</p>
+<p><strong>### Phase 1: Initial Success (Seasons 1-2)</strong></p>
+<p>The show launched strongly with <strong>**4.16 million viewers**</strong> in Season 1. While Season 2 saw a decline to <strong>**3.60 million viewers**</strong> (a decrease of <strong>**0.56 million**</strong> or <strong>**13.5%**</strong>), the show maintained a solid audience base.</p>
+<p><strong>### Phase 2: Sharp Decline (Seasons 2-4)</strong></p>
+<p>The most dramatic drop occurred between Season 2 and Season 3, where viewership fell by <strong>**0.87 million viewers**</strong> (<strong>**24.2% decrease**</strong>), dropping from 3.60M to 2.73M. This trend continued into Season 4, which averaged <strong>**2.26 million viewers**</strong>, representing a further decline of <strong>**0.47 million**</strong> (<strong>**17.2%**</strong>) from Season 3.</p>
+<p><strong>### Phase 3: Gradual Erosion (Seasons 4-7)</strong></p>
+<p>From Season 4 to Season 7, the show experienced steady but slower declines:</p>
+<p>- Season 4 to 5: <strong>**-0.25M**</strong> (-11.1%)</p>
+<p>- Season 5 to 6: <strong>**-0.41M**</strong> (-20.4%)</p>
+<p>- Season 6 to 7: <strong>**-0.30M**</strong> (-18.8%)</p>
+<p>By Season 7, viewership had fallen to <strong>**1.30 million viewers**</strong>, representing a <strong>**68.8% decrease**</strong> from the show’s peak in Season 1.</p>
+<p><strong>### Phase 4: Final Seasons (Seasons 7-9)</strong></p>
+<p>The final three seasons showed continued decline but at a slower rate:</p>
+<p>- Season 7 to 8: <strong>**-0.28M**</strong> (-21.5%), falling to 1.02M viewers</p>
+<p>- Season 8 to 9: <strong>**-0.03M**</strong> (-2.9%), ending at 0.99M viewers</p>
+<p>Notably, Season 9 consisted of only 10 episodes compared to the typical 16, which may have affected the average.</p>
+<p><strong>## Statistical Summary</strong></p>
+<p>- <strong>**Total viewership loss**</strong>: 3.17 million viewers from Season 1 to Season 9</p>
+<p>- <strong>**Percentage decline**</strong>: 76.2% over nine seasons</p>
+<p>- <strong>**Average seasonal decline**</strong>: 0.40 million viewers per season</p>
+<p>- <strong>**Largest single-season drop**</strong>: 0.87M viewers (Season 2→3)</p>
+<p>- <strong>**Smallest decline**</strong>: 0.03M viewers (Season 8→9)</p>
+<p><strong>### Notable Patterns</strong></p>
+<p>1. The show <strong>**never experienced a season-to-season increase**</strong> in viewership</p>
+<p>2. The steepest declines occurred in the middle seasons (3-6)</p>
+<p>3. Despite declining linear viewership, the show built enough of a catalog to achieve massive streaming success years after its conclusion</p>
+<p><strong>## Conclusion</strong></p>
+<p>While *Suits* experienced a steady decline in traditional TV viewership throughout its run, losing <strong>**76.2% of its audience**</strong> from Season 1 (4.16M) to Season 9 (0.99M), the show found remarkable second life in streaming. The 2023 streaming explosion, where it became Netflix’s most-watched acquired series, demonstrates that quality content can find new audiences long after its original broadcast ended.</p>
+<p>The viewership decline pattern is typical for long-running cable dramas, but *Suits* maintained sufficient quality and fan engagement to remain viable for nine seasons and achieve unprecedented streaming success post-cancellation.</p>
+<p><strong>## References</strong></p>
+<p>1. Wikipedia. “Suits (American TV series).” https://en.wikipedia.org/wiki/Suits_(American_TV_series)</p>
+<p>2. Wikipedia. “List of Suits episodes.” https://en.wikipedia.org/wiki/List_of_Suits_episodes</p>
+<p>3. Nielsen Media Research. Viewership data via Wikipedia.</p>
+<p>4. The Hollywood Reporter. “‘Suits’ Sets Another Streaming Record for 2023.” January 29, 2024.</p>
+<hr>
+<p>*Report generated automatically by Python analysis script.*</p>
 
 </main>
 <!-- /main column -->
